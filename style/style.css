@@ -3,7 +3,7 @@ body,html,.container {
     width: 100%;
     height: 100%;
 }
-.header { width: 100%; height: 4%; display: flex; flex-wrap: nowrap; background-color: #801436; color: white; }
+.header { width: auto; height: 4%; display: flex; flex-wrap: nowrap; background-color: #801436; color: white; }
 .header h1 { width: 10%; min-width: 150px; text-align: center; padding: 5px; }
 .header-user { margin-left: auto; }
 .header-user h3 { padding: 10px; cursor: pointer; transition: 0.5s; }
@@ -11,20 +11,114 @@ body,html,.container {
 
 .main { width: 100%; height: 96%; display: flex; flex-wrap: nowrap; }
 
-.sidebar { width: 10%; height: 100%; min-width: 100px; background-color: #801436; }
+.sidebar { width: 10%; height: 100%; min-width: 200px; background-color: #801436; }
 .sidebar ul { text-decoration: none; margin-top: 50%; padding: 2% 0% 2% 0%; text-align: center;}
 .sidebar ul li { padding: 2% 0% 2% 0%; margin-top: 3%; color: white; font-size: 1.5rem; cursor: pointer; transition: 0.5s;}
 .sidebar ul li:hover { background-color: ghostwhite; color: black; }
 .sidebar ul li i { float: right; padding-right: 10px; }
 
-.filter-container { width: 20%; height: 100%; min-width: 100px; border-right: 1px solid #801436; border-left: 1px solid white; }
-.filter-container h2 { text-align: center; font-size: 1.5rem; margin-top: 2%; }
+.filter-container { width: 20%; height: 100%; min-width: 250px; border-right: 1px solid #801436; border-left: 1px solid white; }
+
+.filter-header { display: flex; flex-wrap: nowrap; }
+.filter-header i { padding: 10px; margin-left: auto; cursor: pointer; }
+.filter-header h2 { text-align: center; font-size: 1.5rem; margin-top: 2%; }
+
 .filter-filter { width: 96%; padding: 2%; }
+.filter-filter input:focus { border: 1px solid #801436; }
 .filter-filter-date { text-align: center; margin-top: 5%; }
 .filter-filter-date input { font-size: 1rem; text-align: center; border-radius: 10px; outline: none; border: 1px solid black; padding: 5px; }
 .filter-filter-time { text-align: center; margin-top: 5%; }
 .filter-filter-time input { font-size: 1rem; text-align: center; border-radius: 10px; outline: none; border: 1px solid black; padding: 5px; }
-.filter-container hr { margin-top: 20%; margin-bottom: 20%; }
+.filter-filter button { display: block;border:1px solid transparent; margin-left: auto;margin-right:auto;transition:0.5s;margin-top: 30px;width:170px;padding:5px;font-size:1.3rem;border-radius:10px;cursor:pointer; }
+.filter-filter button:hover { border: 1px solid #801436;color:#801436; }
+.filter-container hr { margin-top: 2%;  }
 .filter-filter-reservieren { width: 96%; padding: 2%; }
+.filter-reservieren { width: 96%; padding: 2%; }
+.filter-reservieren input:focus { border: 1px solid #801436; }
+.filter-reservieren-date { text-align: center; margin-top: 5%; }
+.filter-reservieren-date input { font-size: 1rem; text-align: center; border-radius: 10px; outline: none; border: 1px solid black; padding: 5px; }
+.filter-reservieren-time { text-align: center; margin-top: 5%; }
+.filter-reservieren-time input { font-size: 1rem; text-align: center; border-radius: 10px; outline: none; border: 1px solid black; padding: 5px; }
+.filter-reservieren-data { text-align: center; margin-top: 5%; }
+.filter-reservieren-data input { width: 120px; padding: 5px;font-size:1.2rem;}
+.filter-reservieren-data input:last-of-type { width: 150px;}
+.filter-reservieren button { display: block;border:1px solid transparent; margin-left: auto;margin-right:auto;transition:0.5s;margin-top: 30px;width:170px;padding:5px;font-size:1.3rem;border-radius:10px;cursor:pointer; }
+.filter-reservieren button:hover { border: 1px solid #801436;color:#801436; }
+.filter-filter-config { text-align: center; margin: 5% 0px 5% 0px; }
+.filter-filter-config-type h3 { font-size: 1.3rem; margin-bottom: 10px; }
+.filter-filter-config-type label { font-size: 1.1rem; }
+.filter-filter-config-type input:last-of-type { margin-left: 20px; }
+#filter-filter-config-device { margin-top: 20px; padding: 4px; font-size:1.3rem; border-radius: 5px; outline:none;border:1px solid black; }
+.filter-liste { width: 96%; padding: 2%; }
+
 
 .tischplan { width: 70%;  }
+.table { cursor: pointer; }
+
+.tischplan-svg-header { width: 70%;margin-left:auto;margin-right:auto;display:flex;flex-wrap: nowrap;padding: 1%;}
+.tischplan-svg-header h2 {width: 70%; text-align: left;}
+.tischplan-svg-header-switch { display: flex; flex-wrap: nowrap; width: 320px; }
+.tischplan-svg-header-switch h3 { width: 130px; text-align: center; padding-top: 5px; }
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #90e0ef;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #ffba08;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #ffba08;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  /* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
