@@ -26,7 +26,7 @@ if(isset($_POST['filterRaum']) && isset($_POST['dtf']) && isset($_POST['dtt'])&&
             // Wenn ausgewählte Start Zeit größer als Datenbank End Zeit und ausgewählte End Zeit größer als Datenbank End Zeit
             if(($dtFROM < $datenbankSTART && $dtTO <= $datenbankSTART) == false && ($dtFROM > $datenbankENDE && $dtTO >= $datenbankENDE) == false){
                 $ar[$r]['reservierungID'] = $key['reservierungID'];
-                $ar[$r]['tischeID'] = $key['tischeID'];
+                $ar[$r]['svgID'] = $key['svgID'];
                 $ar[$r]['clientID'] = $key['clientID'];
                 $ar[$r]['raumID'] = $key['raumID'];
                 $ar[$r]['reservierungDatum'] = $key['reservierungDatum'];
@@ -36,6 +36,31 @@ if(isset($_POST['filterRaum']) && isset($_POST['dtf']) && isset($_POST['dtt'])&&
             }
         }
         echo json_encode($ar); return;
+    }
+    return false;
+}
+
+if(isset($_GET['loadOverview']))
+{
+    $id = $_GET['loadOverview'];
+    $db = new Database();
+    // Alle Reservierungen zwischen dateFrom und dateTo in der ausgewählten Zeit, die aktiv sind
+    $query = $db->getConnection()->query("SELECT * FROM rsSvg WHERE svgTyp='$id' and svgAktiv='1'");
+    if($query)
+    {
+        $temp = array(); $r=0;
+        foreach ($query as $key) {
+                $temp['raumID'] = $key['raumID'];
+                $temp['svgTyp'] = $key['svgTyp'];
+                $temp['svgWidth'] = $key['svgWidth'];
+                $temp['svgHeight'] = $key['svgHeight'];
+                $temp['svgX'] = $key['svgX'];
+                $temp['svgY'] = $key['svgY'];
+                $temp['svgFilter'] = $key['svgFilter'];
+                $temp['svgAktiv'] = $key['svgAktiv'];
+            $r++;
+        }
+        echo json_encode($temp); return;
     }
     return false;
 }
