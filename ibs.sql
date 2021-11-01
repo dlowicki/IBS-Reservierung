@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 16. Okt 2021 um 15:36
+-- Erstellungszeit: 26. Okt 2021 um 23:00
 -- Server-Version: 10.4.14-MariaDB
 -- PHP-Version: 7.3.22
 
@@ -95,7 +95,8 @@ INSERT INTO `rsraum` (`raumID`, `raumName`, `raumDatum`, `raumAktiv`) VALUES
 (1, '20 Prozent', '2021-10-05', 1),
 (2, 'Pneumatik', '2021-10-05', 1),
 (3, 'QS', '2021-10-05', 1),
-(4, 'Glaskasten', '2021-10-05', 1);
+(4, 'Glaskasten', '2021-10-05', 1),
+(5, 'alte EDV', '2021-10-25', 1);
 
 -- --------------------------------------------------------
 
@@ -105,7 +106,7 @@ INSERT INTO `rsraum` (`raumID`, `raumName`, `raumDatum`, `raumAktiv`) VALUES
 
 CREATE TABLE `rsreservierung` (
   `reservierungID` int(11) NOT NULL,
-  `tischeID` varchar(100) COLLATE utf8mb4_german2_ci NOT NULL,
+  `svgID` varchar(100) COLLATE utf8mb4_german2_ci NOT NULL,
   `clientID` int(11) NOT NULL,
   `raumID` int(11) NOT NULL,
   `reservierungDatum` date NOT NULL,
@@ -118,48 +119,51 @@ CREATE TABLE `rsreservierung` (
 -- Daten für Tabelle `rsreservierung`
 --
 
-INSERT INTO `rsreservierung` (`reservierungID`, `tischeID`, `clientID`, `raumID`, `reservierungDatum`, `reservierungVon`, `reservierungBis`, `reservierungStatus`) VALUES
+INSERT INTO `rsreservierung` (`reservierungID`, `svgID`, `clientID`, `raumID`, `reservierungDatum`, `reservierungVon`, `reservierungBis`, `reservierungStatus`) VALUES
 (1, 'c18ff186a89342f99faf3ef2e2906c27', 1, 1, '2021-10-13', '09:30:00', '12:00:00', 1);
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `rstische`
+-- Tabellenstruktur für Tabelle `rssvg`
 --
 
-CREATE TABLE `rstische` (
-  `tischeID` varchar(50) COLLATE utf8mb4_german2_ci NOT NULL,
+CREATE TABLE `rssvg` (
+  `svgID` varchar(50) COLLATE utf8mb4_german2_ci NOT NULL,
   `raumID` int(11) NOT NULL,
-  `tischeName` varchar(50) COLLATE utf8mb4_german2_ci NOT NULL,
-  `tischeTyp` varchar(30) COLLATE utf8mb4_german2_ci NOT NULL,
-  `tischeWidth` int(11) NOT NULL,
-  `tischeHeight` int(11) NOT NULL,
-  `tischeX` int(11) NOT NULL,
-  `tischeY` int(11) NOT NULL,
-  `tischeFilter` varchar(20) COLLATE utf8mb4_german2_ci NOT NULL,
-  `tischeAktiv` tinyint(1) NOT NULL
+  `svgName` varchar(50) COLLATE utf8mb4_german2_ci NOT NULL,
+  `svgTyp` varchar(30) COLLATE utf8mb4_german2_ci NOT NULL,
+  `svgWidth` varchar(11) COLLATE utf8mb4_german2_ci NOT NULL,
+  `svgHeight` varchar(11) COLLATE utf8mb4_german2_ci NOT NULL,
+  `svgX` varchar(11) COLLATE utf8mb4_german2_ci NOT NULL,
+  `svgY` varchar(11) COLLATE utf8mb4_german2_ci NOT NULL,
+  `svgFilter` varchar(20) COLLATE utf8mb4_german2_ci NOT NULL,
+  `svgAktiv` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_german2_ci;
 
 --
--- Daten für Tabelle `rstische`
+-- Daten für Tabelle `rssvg`
 --
 
-INSERT INTO `rstische` (`tischeID`, `raumID`, `tischeName`, `tischeTyp`, `tischeWidth`, `tischeHeight`, `tischeX`, `tischeY`, `tischeFilter`, `tischeAktiv`) VALUES
-('070f08ed83274a9d878a6d848cd913f5', 1, 'Tisch 7', 'vertikal', 50, 150, 400, 180, 'laptop', 1),
-('13cffc6f0fa74aafbc51d4e39b15e8ef', 1, 'Tisch 8', 'vertikal', 50, 150, 450, 180, 'laptop', 1),
-('145c6a0252b04010b618a7e5b8d45aa3', 1, 'Tisch 11', 'horizontal', 130, 50, 700, 50, 'laptop', 1),
-('2eb20377cdff4f8db51823bcf59bd145', 1, 'Tisch 12', 'horizontal', 130, 50, 700, 100, 'laptop', 1),
-('3738e8bc6e79421f93f30c21e4d5f323', 1, 'Tür', 'door', 100, 30, 300, 671, '', 1),
-('4f726cab6a4c496f86b307bf4238d293', 1, 'Tisch 13', 'horizontal', 130, 50, 700, 400, 'laptop', 1),
-('55bb9daee4f74737b2ef8bd461abb634', 1, 'Tisch 4', 'horizontal', 130, 50, 100, 450, 'laptop', 1),
-('5e9b07472caa4c6490ae23b67078b6ed', 1, 'Tisch 6', 'vertikal', 50, 150, 450, 30, 'laptop', 1),
-('a4101e6378f2403a957e9027f93fab70', 1, 'Tisch 14', 'horizontal', 130, 50, 700, 450, 'laptop', 1),
-('aa80c1a8f29442ddae858f32ebc6da9f', 1, 'Tisch 3', 'horizontal', 130, 50, 100, 400, 'laptop', 1),
-('bbabce44190840ada68c6b8f1e599eb1', 1, 'Tisch 1', 'horizontal', 130, 50, 100, 50, 'laptop', 1),
-('bdbd91871d0f408aa6db882cfa7c732b', 1, 'Tisch 9', 'vertikal', 50, 150, 400, 330, 'laptop', 1),
-('c128fa3c70554c6b802c8eaeefe29fd1', 1, 'Tisch 10', 'vertikal', 50, 150, 450, 330, 'pc', 1),
-('c18ff186a89342f99faf3ef2e2906c27', 1, 'Tisch 2', 'horizontal', 130, 50, 100, 100, 'pc', 1),
-('e1bdc544e51b4f80a7362c33cc1e9e34', 1, 'Tisch 5', 'vertikal', 50, 150, 400, 30, 'pc', 1);
+INSERT INTO `rssvg` (`svgID`, `raumID`, `svgName`, `svgTyp`, `svgWidth`, `svgHeight`, `svgX`, `svgY`, `svgFilter`, `svgAktiv`) VALUES
+('070f08ed83274a9d878a6d848cd913f5', 1, 'Tisch 7', 'vertikal', '50', '150', '400', '180', 'laptop', 1),
+('13cffc6f0fa74aafbc51d4e39b15e8ef', 1, 'Tisch 8', 'vertikal', '50', '150', '450', '180', 'laptop', 1),
+('145c6a0252b04010b618a7e5b8d45aa3', 1, 'Tisch 11', 'horizontal', '130', '50', '700', '50', 'laptop', 1),
+('2eb20377cdff4f8db51823bcf59bd145', 1, 'Tisch 12', 'horizontal', '130', '50', '700', '100', 'laptop', 1),
+('3738e8bc6e79421f93f30c21e4d5f323', 1, 'Tür', 'door', '100', '30', '300', '671', '', 1),
+('4f726cab6a4c496f86b307bf4238d293', 1, 'Tisch 13', 'horizontal', '130', '50', '700', '400', 'laptop', 1),
+('55bb9daee4f74737b2ef8bd461abb634', 1, 'Tisch 4', 'horizontal', '130', '50', '100', '450', 'laptop', 1),
+('5e9b07472caa4c6490ae23b67078b6ed', 1, 'Tisch 6', 'vertikal', '50', '150', '450', '30', 'laptop', 1),
+('5pUQxyjfKaCpPr6GRRfjqFKhy379vQqT', 1, 'raum-5', 'et-3a', '21%', '15.4vw', '1vw', '26.5vw', 'overview', 1),
+('7NCE4dv4xdkpk6nqXGyTZFptgRk9HumS', 1, 'raum-1', 'et-3a', '37%', '20vw', '49vw', '2vw', 'overview', 1),
+('a4101e6378f2403a957e9027f93fab70', 1, 'Tisch 14', 'horizontal', '130', '50', '700', '450', 'laptop', 1),
+('aa80c1a8f29442ddae858f32ebc6da9f', 1, 'Tisch 3', 'horizontal', '130', '50', '100', '400', 'laptop', 1),
+('bbabce44190840ada68c6b8f1e599eb1', 1, 'Tisch 1', 'horizontal', '130', '50', '100', '50', 'laptop', 1),
+('bdbd91871d0f408aa6db882cfa7c732b', 1, 'Tisch 9', 'vertikal', '50', '150', '400', '330', 'laptop', 1),
+('c128fa3c70554c6b802c8eaeefe29fd1', 1, 'Tisch 10', 'vertikal', '50', '150', '450', '330', 'pc', 1),
+('c18ff186a89342f99faf3ef2e2906c27', 1, 'Tisch 2', 'horizontal', '130', '50', '100', '100', 'pc', 1),
+('e1bdc544e51b4f80a7362c33cc1e9e34', 1, 'Tisch 5', 'vertikal', '50', '150', '400', '30', 'pc', 1),
+('T3CF3Ygvyc2apHy7wJMrbQjcRt5n8WyE', 1, 'raum-2', 'et-3a', '37%', '11.3vw', '1vw', '2vw', 'overview', 1);
 
 --
 -- Indizes der exportierten Tabellen
@@ -190,10 +194,10 @@ ALTER TABLE `rsreservierung`
   ADD PRIMARY KEY (`reservierungID`);
 
 --
--- Indizes für die Tabelle `rstische`
+-- Indizes für die Tabelle `rssvg`
 --
-ALTER TABLE `rstische`
-  ADD PRIMARY KEY (`tischeID`);
+ALTER TABLE `rssvg`
+  ADD PRIMARY KEY (`svgID`);
 
 --
 -- AUTO_INCREMENT für exportierte Tabellen
@@ -215,7 +219,7 @@ ALTER TABLE `rsdevice`
 -- AUTO_INCREMENT für Tabelle `rsraum`
 --
 ALTER TABLE `rsraum`
-  MODIFY `raumID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `raumID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT für Tabelle `rsreservierung`

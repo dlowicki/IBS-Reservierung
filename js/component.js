@@ -8,6 +8,11 @@ $(document).ready(function(){
     }
 });
 
+$(document).on('click','.sidebar ul li', function(event){
+    var id = event.target.id.split('-')[1];
+    window.location.href = '?raum='+id;
+});
+
 // Klick auf Switch zwischen Laptop und Stand-PC
 $(document).on('change','.tischplan-svg-header-switch input',function(event){
     var val = $('.tischplan-svg-header-switch input').prop('checked');
@@ -59,4 +64,8 @@ $(document).on('click','.table',function(event){
             });
         }
     });
+});
+
+$(document).on('click','.header h1',function(){
+    window.location.href = "index.php";
 });

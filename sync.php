@@ -50,14 +50,15 @@ if(isset($_GET['loadOverview']))
     {
         $temp = array(); $r=0;
         foreach ($query as $key) {
-                $temp['raumID'] = $key['raumID'];
-                $temp['svgTyp'] = $key['svgTyp'];
-                $temp['svgWidth'] = $key['svgWidth'];
-                $temp['svgHeight'] = $key['svgHeight'];
-                $temp['svgX'] = $key['svgX'];
-                $temp['svgY'] = $key['svgY'];
-                $temp['svgFilter'] = $key['svgFilter'];
-                $temp['svgAktiv'] = $key['svgAktiv'];
+                $temp[$r]['raumID'] = $key['raumID'];
+                $temp[$r]['svgName'] = $key['svgName'];
+                $temp[$r]['svgTyp'] = $key['svgTyp'];
+                $temp[$r]['svgWidth'] = $key['svgWidth'];
+                $temp[$r]['svgHeight'] = $key['svgHeight'];
+                $temp[$r]['svgX'] = $key['svgX'];
+                $temp[$r]['svgY'] = $key['svgY'];
+                $temp[$r]['svgFilter'] = $key['svgFilter'];
+                $temp[$r]['svgAktiv'] = $key['svgAktiv'];
             $r++;
         }
         echo json_encode($temp); return;

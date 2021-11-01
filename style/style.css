@@ -3,13 +3,12 @@ body,html,.container {
     width: 100%;
     height: 100%;
 }
-.header { width: auto; height: 45px; display: flex; flex-wrap: nowrap; background-color: #801436; color: white; }
-.header h1 { width: 10%; min-width: 150px; text-align: center; padding: 5px; }
+.header { width: auto; min-height: 45px; height: 4%; display: flex; flex-wrap: nowrap; background-color: #801436; color: white; }
+.header h1 { min-width: 50px; }
 .header-user { margin-left: auto; }
-.header-user h3 { padding: 10px; cursor: pointer; transition: 0.5s; }
 .header-user h3:hover { color: darkgrey; }
 
-.main { width: 100%; height: 96%; }
+.main { width: 100%; height: 95%; min-height: 900px; }
 
 .main-top-nav {
   width: 60%;
@@ -44,7 +43,8 @@ body,html,.container {
 
 .main-plan {
   width:80%; height: auto;
-  margin-left: auto; margin-right: auto; margin-top: 30px;
+  margin-left: auto; margin-right: auto; margin-top: 10px;
+  background-repeat:no-repeat;
 }
 
 .rs-overview {
@@ -52,7 +52,9 @@ body,html,.container {
 }
 
 
-
+.tischplan-container {
+  margin-left: auto; margin-right: auto;
+}
 
 
 
@@ -105,7 +107,7 @@ body,html,.container {
 .filter-liste { width: 96%; padding: 2%; }
 
 
-.tischplan { width: 70%;  }
+.tischplan { width: 70%; background-color: #801436; }
 .table { cursor: pointer; }
 
 .tischplan-svg-header { width: 70%;margin-left:auto;margin-right:auto;display:flex;flex-wrap: nowrap;padding: 1%;}
